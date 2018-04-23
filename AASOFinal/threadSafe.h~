@@ -1,0 +1,14 @@
+#include <unistd.h>
+#include "mymalloc.h"
+
+int threadLocked;
+
+void lockThread(){
+	while(threadLocked == 1)
+		usleep(1);
+	threadLocked = 1;
+}
+
+void unlockThread(){
+	threadLocked = 0;
+}
